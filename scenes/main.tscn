@@ -7,6 +7,7 @@
 [node name="Main" type="Node"]
 script = ExtResource("1_o5qli")
 
-[node name="BoardController" parent="." instance=ExtResource("2_sugp2")]
+[node name="BoardController" parent="." node_paths=PackedStringArray("board") instance=ExtResource("2_sugp2")]
+board = NodePath("../BoardComponent")
 
 [node name="BoardComponent" parent="." instance=ExtResource("2_0wfyh")]

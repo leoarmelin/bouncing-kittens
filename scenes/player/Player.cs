@@ -5,12 +5,14 @@ public partial class Player : CharacterBody2D
   [Signal]
   public delegate void OnStopEventHandler();
 
-	private AnimatedSprite2D sprite;
+  private AnimatedSprite2D sprite;
 
-	public override void _Ready()
+  private bool isInMovement = false;
+
+  public override void _Ready()
   {
     sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-		sprite.Play("default");
+    sprite.Play("default");
   }
 
   public override void _PhysicsProcess(double delta)
@@ -18,10 +20,18 @@ public partial class Player : CharacterBody2D
     MoveAndSlide();
     if (Velocity == Vector2.Zero)
     {
-      EmitSignalOnStop();
-      SetPhysicsProcess(false);
-      var currentPosition = GlobalPosition / 32;
-      GlobalPosition = currentPosition * 32;
+      if (isInMovement)
+      {
+        EmitSignalOnStop();
+        isInMovement = false;
+      }
     }
+  }
+
+  public void TryToMove(Vector2I direction)
+  {
+    if (isInMovement) return;
+    isInMovement = true;
+    Velocity = direction * 150;
   }
 }

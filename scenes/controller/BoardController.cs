@@ -37,7 +37,6 @@ public partial class BoardController : Node
 
 	private void HandleMove(Vector2I direction)
 	{
-		selectedPlayer.SetPhysicsProcess(true);
-		selectedPlayer.Velocity = direction * 150;
+		selectedPlayer.TryToMove(direction);
 	}
 }

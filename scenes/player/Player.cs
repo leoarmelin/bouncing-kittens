@@ -25,9 +25,7 @@ public partial class Player : CharacterBody2D
     {
       if (isInMovement)
       {
-        GD.Print(Position);
         Position = Position.Snapped(GRID);
-        GD.Print(Position);
 
         EmitSignalOnStop();
         isInMovement = false;
@@ -40,5 +38,10 @@ public partial class Player : CharacterBody2D
     if (isInMovement) return;
     isInMovement = true;
     Velocity = direction * 150;
+  }
+
+  public void ForceRedirect(Vector2 newVelocity)
+  {
+    Velocity = newVelocity;
   }
 }

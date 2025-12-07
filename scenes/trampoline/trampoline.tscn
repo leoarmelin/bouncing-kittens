@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://c1swegjefetxg"]
+
+[ext_resource type="Script" uid="uid://y1m54q824ler" path="res://scenes/trampoline/Trampoline.cs" id="1_0bkt8"]
+[ext_resource type="Texture2D" uid="uid://2rebnposo8j" path="res://assets/tiles/sprite_trampoline.png" id="2_ood5c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ex2a"]
+size = Vector2(26, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ood5c"]
+size = Vector2(26, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lgckm"]
+size = Vector2(3, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0bkt8"]
+size = Vector2(3, 26)
+
+[node name="Trampoline" type="Node2D" node_paths=PackedStringArray("sprite", "topArea", "rightArea", "bottomArea", "leftArea")]
+script = ExtResource("1_0bkt8")
+diagonal = 1
+sprite = NodePath("Sprite2D")
+topArea = NodePath("TopArea2D")
+rightArea = NodePath("RightArea2D")
+bottomArea = NodePath("BottomArea2D")
+leftArea = NodePath("LeftArea2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(16, 16)
+texture = ExtResource("2_ood5c")
+
+[node name="TopArea2D" type="Area2D" parent="."]
+
+[node name="TopCollisionShape2D" type="CollisionShape2D" parent="TopArea2D"]
+position = Vector2(16, 4.5)
+shape = SubResource("RectangleShape2D_2ex2a")
+
+[node name="BottomArea2D" type="Area2D" parent="."]
+
+[node name="BottomCollisionShape2D" type="CollisionShape2D" parent="BottomArea2D"]
+position = Vector2(16, 27.5)
+shape = SubResource("RectangleShape2D_ood5c")
+
+[node name="LeftArea2D" type="Area2D" parent="."]
+
+[node name="LeftCollisionShape2D" type="CollisionShape2D" parent="LeftArea2D"]
+position = Vector2(4.5, 16)
+shape = SubResource("RectangleShape2D_lgckm")
+
+[node name="RightArea2D" type="Area2D" parent="."]
+
+[node name="RightCollisionShape2D" type="CollisionShape2D" parent="RightArea2D"]
+position = Vector2(27.5, 16)
+shape = SubResource("RectangleShape2D_0bkt8")

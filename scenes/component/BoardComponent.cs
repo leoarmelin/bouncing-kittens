@@ -1,8 +1,8 @@
 using Godot;
 
-namespace Game.Board;
+namespace Game.Component;
 
-public partial class Board : Node2D
+public partial class BoardComponent : Node2D
 {
 	[Export]
 	PackedScene playerScene;

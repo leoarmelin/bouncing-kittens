@@ -4,12 +4,9 @@ namespace Game.Component;
 
 public partial class BoardComponent : Node2D
 {
-	[Export]
-	PackedScene playerScene;
-
-	public override void _Ready()
+	public void AddPlayer(Player player)
 	{
-		var player = playerScene.Instantiate();
+		player.GlobalPosition += new Vector2(16, 16);
 		AddChild(player);
 	}
 }

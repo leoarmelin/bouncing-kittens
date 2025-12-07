@@ -1,34 +1,34 @@
-[gd_scene load_steps=11 format=3 uid="uid://xd0uh7u4ldan"]
+[gd_scene load_steps=12 format=3 uid="uid://xd0uh7u4ldan"]
 
-[ext_resource type="Script" uid="uid://biar6idwj8u7a" path="res://scenes/player/Player.cs" id="1_gfjak"]
-[ext_resource type="Texture2D" uid="uid://cfhpfwhxvg34k" path="res://assets/cats/cat_classical.png" id="1_wr5hl"]
+[ext_resource type="Script" uid="uid://biar6idwj8u7a" path="res://scenes/player/Player.cs" id="1_dovo2"]
+[ext_resource type="Texture2D" uid="uid://cfhpfwhxvg34k" path="res://assets/cats/cat_classical.png" id="2_gmlin"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gfjak"]
-atlas = ExtResource("1_wr5hl")
+atlas = ExtResource("2_gmlin")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4kuee"]
-atlas = ExtResource("1_wr5hl")
+atlas = ExtResource("2_gmlin")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_524rm"]
-atlas = ExtResource("1_wr5hl")
+atlas = ExtResource("2_gmlin")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tpg5x"]
-atlas = ExtResource("1_wr5hl")
+atlas = ExtResource("2_gmlin")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c3xxp"]
-atlas = ExtResource("1_wr5hl")
+atlas = ExtResource("2_gmlin")
 region = Rect2(128, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_npwbq"]
-atlas = ExtResource("1_wr5hl")
+atlas = ExtResource("2_gmlin")
 region = Rect2(160, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v42im"]
-atlas = ExtResource("1_wr5hl")
+atlas = ExtResource("2_gmlin")
 region = Rect2(192, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pn6s4"]
@@ -60,9 +60,17 @@ animations = [{
 "speed": 7.0
 }]
 
-[node name="Player" type="Node2D"]
-script = ExtResource("1_gfjak")
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lvxji"]
+size = Vector2(26, 26)
+
+[node name="Player" type="CharacterBody2D"]
+safe_margin = 0.001
+script = ExtResource("1_dovo2")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_pn6s4")
-centered = false
+frame = 5
+frame_progress = 0.83099693
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_lvxji")

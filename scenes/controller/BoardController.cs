@@ -8,8 +8,16 @@ public partial class BoardController : Node
 	[Export]
 	public BoardComponent board;
 
+	[Export]
+	public PackedScene playerScene;
+
+	private Player selectedPlayer;
+
 	public override void _Ready()
 	{
+		selectedPlayer = playerScene.Instantiate<Player>();
+
+		board.AddPlayer(selectedPlayer);
 	}
 
 	public override void _Input(InputEvent evt)
@@ -29,6 +37,7 @@ public partial class BoardController : Node
 
 	private void HandleMove(Vector2I direction)
 	{
-		GD.Print(direction);
+		selectedPlayer.SetPhysicsProcess(true);
+		selectedPlayer.Velocity = direction * 150;
 	}
 }
